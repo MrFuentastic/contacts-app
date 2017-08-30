@@ -6,29 +6,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-contact = Contact.new({
-                      name: 'Alex Shin',
-                      phone_number: "232334234",
-                      email: 'a_shin@geosites.com',
-                      address:'893489 fun street',
-                      })
+100.times do
+  first_name = Faker::Name.first_name
+  last_name = Faker::Name.last_name
 
-contact.save
+  contact = Contact.new(
+                        name: first_name + last_name,
+                        phone_number: Faker::PhoneNumber.phone_number,
+                        email: Faker::Internet.free_email("#{first_name}.#{last_name}"),
+                        address: Faker::Address.street_address,
+                        )
 
-contact = Contact.new({
-                      name: 'Jesus Somethingorother',
-                      phone_number: "5555555",
-                      email: 'Jmoney@wikileaks.org',
-                      address:'123 mlk dr',
-                      })
-
-contact.save
-
-contact = Contact.new({
-                      name: 'Mr. Bater',
-                      phone_number: "232334234",
-                      email: 'mbater@google.com',
-                      address:'2345 elm str',
-                      })
-
-contact.save
+  contact.save
+end

@@ -5,7 +5,7 @@ class ContactsController < ApplicationController
   end
 
   def contacts_list_action
-    @contacts = Contact.
+    @contacts = Contact.all
     render 'contacts_list.html.erb'
   end
 end

@@ -8,4 +8,12 @@ class ContactsController < ApplicationController
     @contacts = Contact.all
     render 'contacts_list.html.erb'
   end
+
+  def contact_form
+
+  end
+
+  def contact_submitted
+
+  end
 end

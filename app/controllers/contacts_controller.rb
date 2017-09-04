@@ -1,19 +1,14 @@
 class ContactsController < ApplicationController
-  def one_contact_action
-    @contact = Contact.first
-    render 'one_contact.html.erb'
-  end
-
-  def contacts_list_action
+  
+  def index
     @contacts = Contact.all
-    render 'contacts_list.html.erb'
+  end  
+
+  def new
+
   end
 
-  def contact_form
-
-  end
-
-  def contact_submitted
+  def create
     contact = Contact.new(
                             name: params[:name],
                             phone_number: params[:phone_number],
@@ -22,4 +17,8 @@ class ContactsController < ApplicationController
                             )
     contact.save
   end
+
+  def show
+    @contact = Contact.find(params[:id])
+  end  
 end

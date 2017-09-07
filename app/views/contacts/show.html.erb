@@ -3,4 +3,6 @@
 <h3>His phone number is <%= @contact.phone_number%></h3>
 <h3>His email is <%= @contact.email%></h3>
 <h3>His address is <%= @contact.address%></h3>
-
+<h5>Updated On: <%= @contact.updated_at %></h5>
+<a href="/contacts_list/<%= @contact.id %>/edit"><input type="submit" value="Edit Contact" class="btn btn-warning"></a>
+<a href="/contacts_list/<%= @contact.id %>/" data-method="delete"><input type="submit" value="Delete Contact" class="btn btn-danger"></a>

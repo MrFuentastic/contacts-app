@@ -1,5 +1,5 @@
 <h1>This is a list of my contacts, a contact list if you will:</h1>
 <a href="/contacts_list/new"><h4>New Contact</h4></a>
 <% @contacts.each do |contact|%>
-  <a href="/contacts_list/<%= contact.id %>"><h2><%= contact.name %></h2></a>
+  <a href="/contacts_list/<%= contact.id %>"><h2><%= "#{contact.first_name} #{contact.middle_name} #{contact.last_name}" %></h2></a>
 <% end %>

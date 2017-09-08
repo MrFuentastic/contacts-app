@@ -1,8 +1,9 @@
 <h1>This is one of my contacts... </h1>
-<h3>His name is <%= @contact.name%></h3>
-<h3>His phone number is <%= @contact.phone_number%></h3>
-<h3>His email is <%= @contact.email%></h3>
-<h3>His address is <%= @contact.address%></h3>
-<h5>Updated On: <%= @contact.updated_at %></h5>
+<h3>Name: <%= "#{@contact.first_name} #{@contact.middle_name} #{@contact.last_name}" %></h3>
+<h3>Phone numbah: <%= @contact.phone_number %></h3>
+<h3>Email: <%= @contact.email %></h3>
+<h3>Address: <%= @contact.address %></h3>
+<h3>Bio: <%= @contact.bio %></h3>
+<h6>Updated On: <%= @contact.friendly_updated_at %></h6>
 <a href="/contacts_list/<%= @contact.id %>/edit"><input type="submit" value="Edit Contact" class="btn btn-warning"></a>
 <a href="/contacts_list/<%= @contact.id %>/" data-method="delete"><input type="submit" value="Delete Contact" class="btn btn-danger"></a>

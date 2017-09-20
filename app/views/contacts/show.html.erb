@@ -4,6 +4,9 @@
 <h3>Email: <%= @contact.email %></h3>
 <h3>Address: <%= @contact.address %></h3>
 <h3>Bio: <%= @contact.bio %></h3>
+<% @contact.groups.each do |group| %>
+  <h4><%= group.name %></h4>
+<% end %>
 <h6>Updated On: <%= @contact.friendly_updated_at %></h6>
 <a href="/contacts_list/<%= @contact.id %>/edit"><input type="submit" value="Edit Contact" class="btn btn-warning"></a>
 <a href="/contacts_list/<%= @contact.id %>/" data-method="delete"><input type="submit" value="Delete Contact" class="btn btn-danger"></a>

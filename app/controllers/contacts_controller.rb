@@ -43,9 +43,8 @@ class ContactsController < ApplicationController
   end
 
   def update
-    contact = Contact.find(params[:id])
-    flash[:info]
-    contact.assign_attributes(
+    @contact = Contact.find(params[:id])
+    @contact.assign_attributes(
                               first_name: params[:first_name],
                               middle_name: params[:middle_name],
                               last_name: params[:last_name],
@@ -55,9 +54,13 @@ class ContactsController < ApplicationController
                               bio: params[:bio]
                               )
 
-    contact.save
-
-    redirect_to "/contacts_list/#{contact.id}"
+    if @contact.save
+      flaash[:info] = "Contact successfully edited."
+      redirect_to "/contacts_list/#{contact.id}"
+    else
+      @errors = @contact.errors.full_messages
+      render "edit.html.erb"
+    end
   end
 
   def destroy

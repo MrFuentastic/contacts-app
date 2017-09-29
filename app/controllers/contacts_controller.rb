@@ -11,11 +11,11 @@ class ContactsController < ApplicationController
   end  
 
   def new
-
+    @contact = Contact.new
   end
 
   def create
-    contact = Contact.new(
+    @contact = Contact.new(
                             first_name: params[:first_name],
                             middle_name: params[:middle_name],
                             last_name: params[:last_name],
@@ -24,9 +24,14 @@ class ContactsController < ApplicationController
                             address: params[:address],
                             bio: params[:bio]
                             )
-    contact.save
-    flash[:success]
-    redirect_to "/contacts_list/#{contact.id}"
+    if @contact.save
+      flash[:success] = "Contact successfully saved"
+      redirect_to "/contacts_list/#{contact.id}"
+    else
+      @errors = @contact.errors.full_messages
+      flash[:danger] = "Contact was not saved, try again."
+      render "new.html.erb"
+    end
   end
 
   def show
